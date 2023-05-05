@@ -6,10 +6,15 @@ const acBtn = document.querySelector('.all-clear');
 const delBtn = document.querySelector('.delete');
 const equalsBtn = document.querySelector('.equals')
 // event listener
-numBtn.forEach(number => number.addEventListener('click', populate));
-operatorBtn.forEach(operator => operator.addEventListener('click', displayOperator));
-acBtn.addEventListener('click', displayClear);
-equalsBtn.addEventListener('click', (e) => console.log(e.target))
+numBtn.forEach(number => number.addEventListener('click', (e) => {
+    populate(e)
+    getValue();
+}));
+operatorBtn.forEach(operator => operator.addEventListener('click', (e) => {
+    displayOperator(e)
+}))
+acBtn.addEventListener('click', allClear);
+equalsBtn.addEventListener('click', getResult)
 
 
 // create a function of basic math operators
@@ -32,8 +37,11 @@ function divide(x, y) {
 let num1 = 0;
 let operator = '';
 let num2 = 0;
+let result = '';
 
 function operate(x,operators,y) {
+    x = Number(x);
+    y = Number(y);
     if (operators === '+') {return add(x,y)}
     else if (operators === '-') { return subtract(x,y)}
     else if (operators === '*') {return multiply(x,y)}
@@ -43,15 +51,42 @@ function operate(x,operators,y) {
 
 // create a function that will display the num values
 function populate(e) {
-    value = e.target.textContent;
-    return display.textContent += value
+    let value = e.target.textContent;
+    return display.textContent += value;
 };
 
 function displayOperator(e) {
-    value = e.target.textContent;
-    return display.textContent += value
+    operator = e.target.textContent;
+    num1=display.textContent;
+    display.textContent = '';
+    // console.log(e.target);
+    console.log(`NUMBERONE:${num1}`);
+    // return display.textContent += operator
 };
 
-function displayClear(e) {
+function getValue() {
+    if (num1 !== 'string') {
+        num2 = display.textContent;
+    }
+    else {
+        num1 = display.textContent;
+    }
+}
+
+function getResult(e) {
+    if (num1 !== 'string') {
+        // display.textContent = ''
+        num2 = display.textContent;
+        console.log(`NUMBERTWO:${num2}`);
+        result = operate(num1,operator,num2);
+        console.log(result);
+        display.textContent = result;
+    }
+}
+
+function allClear(e) {
+    num1 = 0;
+    num2 = 0;
+    operator = '';
     return display.textContent = '0';
 }
