@@ -1,13 +1,15 @@
 // declare the buttons
 const display = document.querySelector('.display')
-const numbers = document.querySelectorAll('.number');
-const operators = document.querySelectorAll('.operator');
-const allClear = document.querySelector('.all-clear');
-const oneClear = document.querySelector('.delete');
-const equals = document.querySelector('.equals')
+const numBtn = document.querySelectorAll('.number');
+const operatorBtn = document.querySelectorAll('.operator');
+const acBtn = document.querySelector('.all-clear');
+const delBtn = document.querySelector('.delete');
+const equalsBtn = document.querySelector('.equals')
 // event listener
-numbers.forEach(number => number.addEventListener('click', displayNum1));
-operators.forEach(operator => operator.addEventListener('click', displayOperator));
+numBtn.forEach(number => number.addEventListener('click', populate));
+operatorBtn.forEach(operator => operator.addEventListener('click', displayOperator));
+acBtn.addEventListener('click', displayClear);
+equalsBtn.addEventListener('click', (e) => console.log(e.target))
 
 
 // create a function of basic math operators
@@ -40,12 +42,16 @@ function operate(x,operators,y) {
 
 
 // create a function that will display the num values
-function displayNum1(e) {
-    num1 = e.target.textContent;
-    return display.textContent += num1
+function populate(e) {
+    value = e.target.textContent;
+    return display.textContent += value
 };
 
 function displayOperator(e) {
-    operator = e.target.textContent;
-    return display.textContent += operator
+    value = e.target.textContent;
+    return display.textContent += value
 };
+
+function displayClear(e) {
+    return display.textContent = '0';
+}
