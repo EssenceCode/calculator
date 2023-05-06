@@ -52,6 +52,7 @@ function operate(x,operators,y) {
 // create a function that will display the num values
 function populate(e) {
     let value = e.target.textContent;
+    if (display.textContent === '0') { display.textContent = ''}
     return display.textContent += value;
 };
 
@@ -63,7 +64,7 @@ function displayOperator(e) {
     console.log(`NUMBERONE:${num1}`);
     // return display.textContent += operator
 };
-
+// write a function that will store the number to the variables
 function getValue() {
     if (num1 !== 'string') {
         num2 = display.textContent;
@@ -72,13 +73,14 @@ function getValue() {
         num1 = display.textContent;
     }
 }
-
+// write a function that will calculate the two number variables
 function getResult(e) {
-    if (num1 !== 'string') {
+    if (operator !== 'string') {
         // display.textContent = ''
-        num2 = display.textContent;
+        // num2 = display.textContent;
         console.log(`NUMBERTWO:${num2}`);
         result = operate(num1,operator,num2);
+        num1 = result;
         console.log(result);
         display.textContent = result;
     }
