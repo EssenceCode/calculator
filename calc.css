@@ -11,7 +11,9 @@ body {
     padding: 30px;
     gap: 10px;
     border: 2px solid black;
-    background: plum;
+    background: black;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .btn-container {
@@ -25,6 +27,7 @@ body {
     text-align: right;
     align-self: center;
     border: 2px solid black;
+    border-radius: 20px;
     width: 280px;
     height: 76px;
     padding: 8px;
@@ -50,16 +53,25 @@ button {
     margin: 0px;
     padding: 0px;
     background-color: white;
-    border: 2px solid plum;
+    border: 2px solid gray;
     border-radius: 20px;
     font-size: 25px;
 }
 
-button {
-    transition-duration: 0.4s;
-  }
 
-button:hover {
-    background: gold;
-    
+/* button background colors */
+button.number {
+    background: aqua;
+    border: 1px aqua;
 }
+
+button.operator {
+    background: blueviolet;
+    border: 1px blueviolet;
+}
+
+button.equals,button#zero,button.delete {
+    background: violet;
+    border: 1px violet;
+}
+
