@@ -4,7 +4,8 @@ const numBtn = document.querySelectorAll('.number');
 const operatorBtn = document.querySelectorAll('.operator');
 const acBtn = document.querySelector('.all-clear');
 const delBtn = document.querySelector('.delete');
-const equalsBtn = document.querySelector('.equals')
+const equalsBtn = document.querySelector('.equals');
+const decimal = document.querySelector('.decimal');
 // event listener
 numBtn.forEach(number => number.addEventListener('click', (e) => {
     populate(e)
@@ -14,8 +15,8 @@ operatorBtn.forEach(operator => operator.addEventListener('click', (e) => {
     displayOperator(e)
 }))
 acBtn.addEventListener('click', allClear);
-equalsBtn.addEventListener('click', getResult)
-
+equalsBtn.addEventListener('click', getResult);
+decimal.addEventListener('click',populate);
 
 // create a function of basic math operators
 function add(x, y) {
@@ -59,10 +60,7 @@ function populate(e) {
 function displayOperator(e) {
     operator = e.target.textContent;
     num1=display.textContent;
-    display.textContent = '';
-    // console.log(e.target);
-    console.log(`NUMBERONE:${num1}`);
-    // return display.textContent += operator
+    return display.textContent = '';
 };
 // write a function that will store the number to the variables
 function getValue() {
@@ -76,14 +74,20 @@ function getValue() {
 // write a function that will calculate the two number variables
 function getResult(e) {
     if (operator !== 'string') {
-        // display.textContent = ''
-        // num2 = display.textContent;
-        console.log(`NUMBERTWO:${num2}`);
         result = operate(num1,operator,num2);
         num1 = result;
-        console.log(result);
         display.textContent = result;
     }
+    if (num1 === '0' && operator === '/') {
+         display.textContent = 'ERROR'
+    }
+    else if (num2 === '0' && operator === '/') {
+         display.textContent = 'ERROR'
+    }
+    else if (num1 === 0 && operator === '/') {
+        display.textContent = 'ERROR'
+   }
+
 }
 
 function allClear(e) {
