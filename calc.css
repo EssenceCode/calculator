@@ -13,7 +13,7 @@ body {
     border: 2px solid black;
     background: black;
     border-radius: 50px;
-    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .btn-container {
@@ -58,7 +58,9 @@ button {
     font-size: 25px;
 }
 
-
+.title-container > p {
+    color: aliceblue;
+}
 /* button background colors */
 button.number {
     background: aqua;
@@ -68,9 +70,10 @@ button.number {
 button.operator {
     background: blueviolet;
     border: 1px blueviolet;
+    flex: 1;
 }
 
-button.equals,button#zero,button.delete {
+button.equals,button#zero,button.delete,button.decimal {
     background: violet;
     border: 1px violet;
 }
