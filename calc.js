@@ -12,7 +12,8 @@ numBtn.forEach(number => number.addEventListener('click', (e) => {
     getValue();
 }));
 operatorBtn.forEach(operator => operator.addEventListener('click', (e) => {
-    displayOperator(e)
+    displayOperator(e),
+    doMath() 
 }))
 acBtn.addEventListener('click', allClear);
 equalsBtn.addEventListener('click', getResult);
@@ -35,14 +36,16 @@ function divide(x, y) {
     return x / y;
 };
 
-let num1 = 0;
-let operator = '';
-let num2 = 0;
+let num1 = null;
+let operator = null;
+let operator2 =null;
+let num2 = null;
 let result = '';
 
 function operate(x,operators,y) {
     x = Number(x);
     y = Number(y);
+    console.log(`num1:${x} math:${operator} num2: ${y}`)
     if (operators === '+') {return add(x,y)}
     else if (operators === '-') { return subtract(x,y)}
     else if (operators === '*') {return multiply(x,y)}
@@ -54,29 +57,70 @@ function operate(x,operators,y) {
 function populate(e) {
     let value = e.target.textContent;
     if (display.textContent === '0') { display.textContent = ''}
+    else if (operator !== null && num2 === null) { display.textContent = ''}
+    else if (num1 === result && num2 === null) { display.textContent = ''}
     return display.textContent += value;
 };
 
-function displayOperator(e) {
-    operator = e.target.textContent;
-    num1=display.textContent;
-    return display.textContent = '';
-};
+
 // write a function that will store the number to the variables
 function getValue() {
-    if (num1 !== 'string') {
+    if (operator !== null || operator2 !== null) {
         num2 = display.textContent;
+        
     }
-    else {
+    else if (operator === null) {
         num1 = display.textContent;
+        // console.log(`${num1}`)
     }
 }
+function displayOperator(e) {
+    if (num1 !== null && num2 === null ) {
+        operator = e.target.textContent
+        // display.textContent = ''
+    }
+    else if (operator !== null && operator2 === null) {
+        operator2 = e.target.textContent
+    }
+};
+
+function doMath() {
+    if (num1 !== null && operator !== null && num2 !== null) {
+        result = operate(num1,operator,num2);
+        console.log(operator);
+        num1 = result;
+        num2 = null;
+        operator = null;
+        display.textContent = num1;
+        console.log(result)
+    }
+    else if (num1 === result && operator2 !== null && num2 !== null) {
+        result = operate(num1,operator2,num2);
+        num1 = result;
+        operator2 = null;
+        display.textContent = result;
+        num2 = null;
+    }
+}
+
 // write a function that will calculate the two number variables
 function getResult(e) {
-    if (operator !== 'string') {
+    if (operator !== null) {
         result = operate(num1,operator,num2);
         num1 = result;
+        num2 = null;
+        operator = null;
+        operator2 = null;
         display.textContent = result;
+    }
+    else if (operator2 !== null) {
+        result = operate(num1,operator2,num2);
+        num1 = result;
+        num2 = null;
+        operator = null;
+        operator2 = null;
+        display.textContent = result;
+
     }
     if (num1 === '0' && operator === '/') {
          display.textContent = 'ERROR'
@@ -91,8 +135,10 @@ function getResult(e) {
 }
 
 function allClear(e) {
-    num1 = 0;
-    num2 = 0;
-    operator = '';
+    num1 = null;
+    num2 = null;
+    operator = null;
+    operator2 = null;
+    result = null;
     return display.textContent = '0';
 }
