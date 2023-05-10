@@ -61,20 +61,36 @@ button {
 .title-container > p {
     color: aliceblue;
 }
-/* button background colors */
-button.number {
-    background: aqua;
-    border: 1px aqua;
-}
-
 button.operator {
-    background: blueviolet;
-    border: 1px blueviolet;
     flex: 1;
 }
+/* button background colors */
+.all-clear {
+    transition-duration: 0.4s;
+  }
+.all-clear:hover {
+    background: grey;
+    color: white;
+    border: 1px solid grey;
+}  
 
-button.equals,button#zero,button.delete,button.decimal {
-    background: violet;
-    border: 1px violet;
+.number {
+    transition-duration: 0.4s;
+}
+.number:hover {
+    background: black;
+    color: white;
+    border: 1px solid black;
+}
+
+.operator,
+.equals {
+    transition-duration: 0.4s;
+}
+.operator:hover,
+.equals:hover {
+    background: orange;
+    color: white;
+    border: 1px solid orange;
 }
 
