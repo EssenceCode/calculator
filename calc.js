@@ -5,6 +5,15 @@ const operatorBtn = document.querySelectorAll('.operator');
 const acBtn = document.querySelector('.all-clear');
 const delBtn = document.querySelector('.delete');
 const equalsBtn = document.querySelector('.equals');
+delBtn.addEventListener('click', (e) => {
+   let value = display.textContent.substring(1,4);
+   if(num1 === result) {
+     num2 = value;
+   } else {
+     num1 = value
+   }
+   return display.textContent = value;
+})
 // const decimal = document.querySelector('.decimal');
 // event listener
 numBtn.forEach(number => number.addEventListener('click', (e) => {
