@@ -5,16 +5,7 @@ const operatorBtn = document.querySelectorAll('.operator');
 const acBtn = document.querySelector('.all-clear');
 const delBtn = document.querySelector('.delete');
 const equalsBtn = document.querySelector('.equals');
-delBtn.addEventListener('click', (e) => {
-   let value = display.textContent.substring(1,4);
-   if(num1 === result) {
-     num2 = value;
-   } else {
-     num1 = value
-   }
-   return display.textContent = value;
-})
-// const decimal = document.querySelector('.decimal');
+const decimal = document.querySelector('.decimal');
 // event listener
 numBtn.forEach(number => number.addEventListener('click', (e) => {
     populate(e),
@@ -24,6 +15,29 @@ operatorBtn.forEach(operator => operator.addEventListener('click', (e) => {
     getOperator(e),
     doMath(e) 
 }))
+delBtn.addEventListener('click', (e) => {
+   let value = display.textContent.slice(0, -1);
+   if(num1 === result) {
+     num2 = value;
+   } else {
+     num1 = value
+   }
+   return display.textContent = value;
+})
+decimal.addEventListener('click', (e) => {
+    let value = e.target.textContent
+    if (!num1 || typeof(num1) === 'string' && !num1.includes('.')) {
+        display.textContent += value
+        // num1+= value
+    }
+    else if (!num2.includes('.') || !num2 && typeof(num1) === 'number') {
+        display.textContent += value
+        // num2+= value 
+    }
+ 
+         
+   
+})
 acBtn.addEventListener('click', allClear);
 equalsBtn.addEventListener('click', getResult);
 
