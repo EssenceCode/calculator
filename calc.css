@@ -87,13 +87,15 @@ a {
     color: aliceblue;
 }
 /* button background colors */
-.all-clear {
+.all-clear,
+.delete {
     transition-duration: 0.4s;
   }
-.all-clear:hover {
-    background: grey;
+.all-clear:hover,
+.delete:hover {
+    background: crimson;
     color: white;
-    border: 1px solid grey;
+    border: 1px solid crimson
 }  
 
 .number {
