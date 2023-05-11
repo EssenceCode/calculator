@@ -108,11 +108,13 @@ a {
 }
 
 .operator,
-.equals {
+.equals,
+.decimal:hover {
     transition-duration: 0.4s;
 }
 .operator:hover,
-.equals:hover {
+.equals:hover,
+.decimal:hover {
     background: orange;
     color: white;
     border: 1px solid orange;
