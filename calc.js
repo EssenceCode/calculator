@@ -148,7 +148,7 @@ function getResult(e) {
        return display.textContent = 'ERROR'
    }
    
-   else if (num1 === 0 && operator2 === '/') {
+   else if (typeof(num1) !== 0 && num2 !== null && operator2 === '/') {
        return display.textContent = 'ERROR'
   }
 
