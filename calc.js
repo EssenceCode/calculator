@@ -116,6 +116,14 @@ function getOperator(e) {
 };
 
 function doMath(e) {
+    if (num1 === '0' || num2 === '0' && operator1 === '/') {
+        return display.textContent = 'ERROR'
+    }
+    
+    else if (num1 === 0 && operator2 === '/') {
+        return display.textContent = 'ERROR'
+   }
+    
     if (num1 !== null && operator1 !== null && num2 !== null) {
         result = operate(num1,operator1,num2);
         num1 = Number(result.toFixed(2));
