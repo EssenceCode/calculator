@@ -50,11 +50,8 @@ body {
     justify-content: center;
 }
 
-#zero, .equals {
+#zero{
    flex: 1;
-}
-button.operator {
-    flex: 1;
 }
 
 button {
