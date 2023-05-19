@@ -116,7 +116,11 @@ function getOperator(e) {
 };
 
 function doMath(e) {
-    if (num1 === '0' || num2 === '0' && operator1 === '/') {
+    if (num1 === '0'&& num2 !== null && operator1 === '/') {
+        return display.textContent = 'ERROR'
+    }
+    
+    else if (num2 === '0' && operator1 === '/') {
         return display.textContent = 'ERROR'
     }
     
